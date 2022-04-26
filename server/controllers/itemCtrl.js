@@ -42,6 +42,7 @@ updateItem = async (req, res) => {
       error: 'You must provide an item to update:('
     })
   }
+
   Item.findOne({ _id: req.params.id }, (err, item) => {
     if (err) {
       return res.status(400).json({
@@ -71,7 +72,7 @@ updateItem = async (req, res) => {
 }
 
 deleteItem = async (req, res) => {
-  Item.findOneAndDelete({ _id: req.params.id }, (err, item) => {
+  await Item.findOneAndDelete({ _id: req.params.id }, (err, item) => {
     if (err) { 
       return res.status(400).json({
         success:false,
@@ -89,7 +90,7 @@ deleteItem = async (req, res) => {
 }
 
 getItemById = async (req, res) => {
-  Item.findOneAndDelete({_id: req.params.id}, (err, item) =>{
+  await Item.findOne({_id: req.params.id}, (err, item) =>{
     if (err) {
       return res.status(400).json({ success: false, error: err})
     }
@@ -104,7 +105,7 @@ getItemById = async (req, res) => {
 }
 
 getItems = async (req,res) => {
-  Item.find({}, (err, items) => {
+  await Item.find({}, (err, items) => {
     if (err) {
       return res.status(400).json({ success: false, error: err})
     }
