@@ -13,7 +13,7 @@ class Home extends Component {
     return (
       <Container>
         <Description>
-          This is the NOMS App. No Oe Must Stave. Help distribute food resources in your community.
+          This is the NOMS App. No One Must Starve. Help distribute food resources in your community.
         </Description>
       </Container>
     )
