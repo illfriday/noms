@@ -10,6 +10,44 @@ const Wrapper = styled.div`
     padding: 0 40px 0 40px;
 `
 
+const Update = styled.div`
+    color: #ef9b0f;
+    cursor: pointer;
+`
+
+const Delete = styled.div`
+    color: #ff0000;
+    cursor: pointer;
+`
+
+class UpdateItem extends Component {
+    updateUser = event => {
+        event.preventDefault();
+
+        window.location.href = `/items/update/${this.props.id}`
+    }
+
+    render () {
+        return <Update onClick={this.updateUser}>Update</Update>
+    }
+}
+
+class DeleteItem extends Component {
+    deleteUser = event => {
+        event.preventDefault();
+
+        if(
+            window.confirm(`Do you want to delete the item ${this.props.id} permanently?`)
+        ) {
+            api.deleteItemById(this.props.id);
+            window.location.reload();
+        }
+    }
+
+    render () {
+        return <Delete onClick={this.deleteUser}>Delete</Delete>
+    }
+}
 
 class ItemsList extends Component {
     constructor(props) {
@@ -56,6 +94,28 @@ class ItemsList extends Component {
                 Header: 'Description',
                 accessor: 'description',
                 filterable: true,
+            },
+            {
+                Header: '',
+                accessor: '',
+                Cell: function(props) {
+                    return(
+                        <span>
+                            <UpdateItem id={props.original._id} />
+                        </span>
+                    )
+                }
+            },
+            {
+                Header: '',
+                accessor: '',
+                Cell: function(props) {
+                    return(
+                        <span>
+                            <DeleteItem id={props.original._id} />
+                        </span>
+                    )
+                }
             },
         ]
 
