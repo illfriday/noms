@@ -58,11 +58,11 @@ updateItem = async (req, res) => {
       .then(() => {
         return res.status(200).json({
           success: true,
-          id: item._id,
+          id: movie._id,
           message: 'Item updated!:)'
         })
       })
-      .catch(err => {
+      .clone().catch(err => {
         return res.status(404).json({
           err,
           message: 'Item not updated!:('

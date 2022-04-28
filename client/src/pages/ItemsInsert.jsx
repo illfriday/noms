@@ -27,13 +27,13 @@ const InputText = styled.input.attrs({
 const Button = styled.button.attrs({
     className: 'btn btn-primary'
 })`
-    margin: 15px 15px 15px 15px;
+    margin: 15px 15px 15px 5px;
 `
 
 const CancelButton = styled.a.attrs({
     className: 'btn btn-danger'
 })`
-    margin: 15px 15px 15px 15px;
+    margin: 15px 15px 15px 5px;
 `
 
 class ItemsInsert extends Component {
